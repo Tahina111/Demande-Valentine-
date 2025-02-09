@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veux-tu être ma Valentine ?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        h1 {
+            color: #d32f2f;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .yes-button, .no-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .yes-button {
+            background-color: #4caf50;
+            color: white;
+        }
+        .no-button {
+            background-color: #f44336;
+            color: white;
+        }
+        .yes-button:hover {
+            transform: scale(1.1);
+        }
+        .no-button:hover {
+            transform: scale(1.1);
+        }
+        .stickers {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .stickers img {
+            width: 100px;
+            height: 100px;
+            transition: transform 0.3s;
+        }
+        .stickers img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Veux-tu être ma Valentine ?</h1>
+    <div class="buttons">
+        <button class="yes-button" onclick="handleYesClick()">Oui</button>
+        <button class="no-button" onclick="handleNoClick()">Non</button>
+    </div>
+    <div class="stickers">
+        <img src="https://emojicdn.elk.sh/❤️" alt="Coeur">
+        <img src="https://emojicdn.elk.sh/🌹" alt="Rose">
+        <img src="https://emojicdn.elk.sh/😊" alt="Sourire">
+    </div>
+
+    <script>
+        const messages = ["Sûr ?", "Vraiment sûr ?", "Réfléchis bien !", "Dernière chance !", "Tu vas regretter !"];
+        let messageIndex = 0;
+
+        function handleNoClick() {
+            const noButton = document.querySelector(".no-button");
+            const yesButton = document.querySelector(".yes-button");
+            noButton.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = `${currentSize * 1.5}px`;
+        }
+
+        function handleYesClick() {
+            window.location.href = "yes_page.html";
+        }
+    </script>
+</body>
+</html>
